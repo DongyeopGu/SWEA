@@ -128,3 +128,65 @@
 #     print(f"#{test_case + 1} {result}")
 
 # 1928. base64 decoder
+
+# 1961. 숫자 회전
+# def rotate(m, d):
+#     N = len(m)
+#     a = [[0] * N for i in range(N)]
+
+#     if d % 4 == 1:
+#         for r in range(N):
+#             for c in range(N):
+#                 a[c][N-1-r] = m[r][c]
+#     elif d % 4 == 2:
+#         for r in range(N):
+#             for c in range(N):
+#                 a[N-1-r][N-1-c] = m[r][c]
+#     elif d % 4 == 3:
+#         for r in range(N):
+#             for c in range(N):
+#                 a[N-1-c][r] = m[r][c]
+#     else:
+#         for r in range(N):
+#             for c in range(N):
+#                 a[r][c] = m[r][c]
+
+#     return a
+
+# for test_case in range(int(input())):
+#     N = int(input())
+#     num = [list(map(int, input().split())) for i in range(N)]
+#     a = rotate(num, 1)
+#     b = rotate(num, 2)
+#     c = rotate(num, 3)
+#     print(f"#{test_case + 1}")
+#     for i in range(N):
+#         print(''.join(map(str, a[i])), ''.join(map(str, b[i])), ''.join(map(str, c[i])))
+
+# 1954. 달팽이 숫자
+# for test_case in range(int(input())):
+#     N = int(input())
+#     snail = [[0 for i in range(N)] for j in range(N)]
+#     row = N
+#     col = N
+#     count = 0
+#     offset = 0
+#     while row > 0 and col > 0:
+#         for i in range(offset, offset+col):
+#             count += 1
+#             snail[offset][i] = count
+#         for i in range(offset+1, offset+row):
+#             count += 1
+#             snail[i][offset+col-1] = count
+#         for i in range(offset+col-2, offset-1, -1):
+#             count += 1
+#             snail[offset+row-1][i] = count
+#         for i in range(offset+row-2, offset, -1):
+#             count += 1
+#             snail[i][offset] = count
+#         offset += 1
+#         row -= 2
+#         col -= 2
+#     print(f"#{test_case + 1}")
+#     for i in range(N):
+#         print(' '.join(map(str, snail[i])))
