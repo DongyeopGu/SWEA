@@ -1,72 +1,19 @@
-# T = int(input())  # 테스트 케이스
-# for i in range(T):    # 테스트 케이스 반복
-#     N = int(input())  # 테스트 1<= N <= 10
-#     pascal_1 = [1]
-#     pascal_2 = [1, 1]
-#     pascal_ = [1, 1]
-#     if N == 1:
-#         print(''.join(map(str, pascal_1)))
-#     elif N == 2:
-#         print(''.join(map(str, pascal_1)))
-#         print(' '.join(map(str, pascal_2)))
-#     else:
-#         print(''.join(map(str, pascal_1)))
-#         print(' '.join(map(str, pascal_2)))
-#         pascal_n = [1] * N
-#         for k in range(1, N-1):
-#             pascal_n = pascal_    
-#             pascal_n[k] = pascal_[k] + pascal_[k-1]
-#             print(k, pascal_n)
-
-
-# for T in range(int(input())):
-#     N,K=map(int,input().split())
-#     M=[list(map(int,input().split())) for i in range(N)]
-#     M+=[[M[i][j]for i in range(N)]for j in range(N)]
-#     c=0
-#     for i in range(2*N):
-#         for j in range(N-K+1):
-#             if sum(M[i][j:j+K])==K and (j==0 or (j>0 and not M[i][j-1])) and (j+K==N or (j+K<N and not M[i][j+K])):
-#                 c+=1
-#     print("#%d %d"%(T+1,c))
-for i in range(int(input())):
-    sudoku = [list(map(int, input().split())) for i in range(9)]
-    sudoku_1 = list([sudoku[i][j] for i in range(9)] for j in range(9))
-    result = 0
-    
-    sudoku_2 = []
-    for j in range(3):
-        for m in range(3):
-            sudoku_2 += [sudoku[j][m]]
-    for k in range(3):
-        for l in range(3,6):
-            sudoku_2 += [sudoku[k][l]]
-    for k in range(3):
-        for l in range(6,9):
-            sudoku_2 += [sudoku[k][l]]
-    
-    for j in range(3,6):
-        for m in range(3):
-            sudoku_2 += [sudoku[j][m]]
-    for k in range(3,6):
-        for l in range(3,6):
-            sudoku_2 += [sudoku[k][l]]
-    for k in range(3,6):
-        for l in range(6,9):
-            sudoku_2 += [sudoku[k][l]]
-
-    for j in range(6,9):
-        for m in range(3):
-            sudoku_2 += [sudoku[j][m]]
-    for k in range(6,9):
-        for l in range(3,6):
-            sudoku_2 += [sudoku[k][l]]
-    for k in range(6,9):
-        for l in range(6,9):
-            sudoku_2 += [sudoku[k][l]]
-
-    for i in range(0,81,9):
-        print(set(sudoku_2[i:i+9]))
-    for j in range(9):
-        print(len(set(sudoku_1[j])))
-    
+for test_case in range(10):         # 10번의 테스트 케이스 입력
+    N = int(input())                # 가로길이 입력
+    height = list(map(int, input().split()))        # 빌딩 높이 입력
+    sum_view = 0                    # 조망권 합 넣을 변수 선언
+    dif_height = 0                  # 왼쪽 조망권 확보한 곳 찾을 변수
+    dif_height_1 = 0                # 오른쪽 조망권 확보한 곳 찾을 변수
+    for i in range(2, N-2):         # 빌딩 있는 곳 반복
+        if height[i-2] > height[i-1]:       # 왼쪽 두번째, 첫번째 비교 후 큰 값 반환
+            dif_height = height[i-2]
+        else:
+            dif_height = height[i-1]        
+        if height[i+1] > height[i+2]:       # 오른쪽 두번째, 첫번째 비교 후 큰 값 반환
+            dif_height_1 = height[i+1]
+        else:
+            dif_height_1 = height[i+2]
+        if height[i] - dif_height > 0 and height[i] - dif_height_1 > 0:        # 왼쪽과 오른쪽 차이가 양수일 때 중간값 차이를 계속 더함
+            sum_view += (min(height[i] - dif_height, height[i] - dif_height_1))
+    print(f"#{test_case + 1} {sum_view}")
+            
