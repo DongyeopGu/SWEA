@@ -129,25 +129,117 @@
 #     print(' '.join(new_str))
 
 # 1225. 암호생성기
-# def pwd_create(a):
+
+# for test_case in range(10):
+#     T = int(input())
+#     a = list(map(int, input().split()))
 #     while True:
 #         b = 0
-#         for i in range(5):
-#             b = a[7]
-#             a[7] = a[0] - i
-#             a[0], a[1], a[2], a[3], a[4], a[5], a[6] = a[1], a[2], a[3], a[4], a[5], a[6], b
-#         if a[0] - 1 < 0 or a[7] == 0:
+#         for i in range(1, 6):
+#             b = a[0] - i
+#             if b <= 0:
+#                 b = 0
+#                 continue
+#             for j in range(7):
+#                 a[j] = a[j + 1]
+#             a[7] = b
+#             print(a)
+#         if b == 0:
+#             for j in range(7):
+#                 a[j] = a[j + 1]
 #             break
-#     return a    
+#     a[7] = 0
+#     print(f"#{T} {' '.join(list(map(str, a)))}")
 
+# 1228. 암호문 1
+# for test_case in range(10):
+#     N = int(input())
+#     origin_pwd = list(map(int, input().split()))
+#     N_1 = int(input())
+#     f_command = list(map(str, input().split()))
+#     r_command = [[]for i in range(N_1)]
+#     I = []
+#     for i in range(len(f_command)):
+#         if f_command[i].isdigit() == True:
+#             f_command[i] = int(f_command[i])
+#         else:
+#             I.append(i)
+#     I.append(len(f_command))
+#     for i in range(N_1):
+#         for j in range(i+1):
+#             r_command[i] = f_command[I[j]:I[j+1]]
+#     print(r_command)
+#     for i in range(N_1):
+#         for j in range(len(r_command[i][3:])):
+#             origin_pwd.insert(r_command[i][1]+j, r_command[i][3+j])
+#     print(f"#{test_case + 1} {' '.join(map(str , origin_pwd[:10]))}")
+
+# 1229. 암호문2
+
+# for test_case in range(10):
+#     N = int(input())
+#     origin_pwd = list(map(int, input().split()))
+#     N_1 = int(input())
+#     f_command = list(map(str, input().split()))
+#     r_command = [[]for i in range(N_1)]
+#     I = []
+#     for i in range(len(f_command)):
+#         if f_command[i].isdigit() == True:
+#             f_command[i] = int(f_command[i])
+#         else:
+#             I.append(i)
+#     I.append(len(f_command))
+#     for i in range(N_1):
+#         for j in range(i+1):
+#             r_command[i] = f_command[I[j]:I[j+1]]
+#     for i in range(N_1):
+#         if r_command[i][0] == 'I':
+#             for j in range(len(r_command[i][3:])):
+#                 origin_pwd.insert(r_command[i][1]+j, r_command[i][3+j])
+#         elif r_command[i][0] =='D':
+#             for j in range(r_command[i][2]):
+#                 origin_pwd.pop(r_command[i][1])
+#     print(f"#{test_case + 1} {' '.join(map(str , origin_pwd[:10]))}")
+        
+# 1230. 암호문 3
+
+# for test_case in range(10):
+#     N = int(input())
+#     origin_pwd = list(map(int, input().split()))
+#     N_1 = int(input())
+#     f_command = list(map(str, input().split()))
+#     r_command = [[]for i in range(N_1)]
+#     I = []
+#     for i in range(len(f_command)):
+#         if f_command[i].isdigit() == True:
+#             f_command[i] = int(f_command[i])
+#         else:
+#             I.append(i)
+#     I.append(len(f_command))
+#     for i in range(N_1):
+#         for j in range(i+1):
+#             r_command[i] = f_command[I[j]:I[j+1]]
+#     for i in range(N_1):
+#         if r_command[i][0] == 'I':
+#             for j in range(len(r_command[i][3:])):
+#                 origin_pwd.insert(r_command[i][1]+j, r_command[i][3+j])
+#         elif r_command[i][0] =='D':
+#             for j in range(r_command[i][2]):
+#                 del origin_pwd[r_command[i][1]]
+#         else:
+#             for j in range(r_command[i][1]):
+#                 origin_pwd.append(r_command[i][2+j])
+#     print(f"#{test_case + 1} {' '.join(map(str , origin_pwd[:10]))}")
+
+# 1234. 비밀번호
+a = ['00']+ [str(i*11)for i in range(1,10)]
+def pwd_create(n):
+    for i in range(len(a)):
+        if a[i] in n:
+            n = n.replace(str(a[i]), '')
+            return pwd_create(n)
+        if a[i] not in n:
+            return n
 for test_case in range(10):
-    T = int(input())
-    a = list(map(int, input().split()))
-    b = list()
-    
-    for i in range(1, 6):
-        a.append(a[0]-i)
-        del a[0]
-        print(a)
-        
-        
+    N, pwd = map(str, input().split(' '))
+    print(f"#{test_case + 1} {pwd_create(pwd)}")
