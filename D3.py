@@ -203,30 +203,48 @@
         
 # 1230. 암호문 3
 
-for test_case in range(10):
-    N = int(input())
-    origin_pwd = list(map(int, input().split()))
-    N_1 = int(input())
-    f_command = list(map(str, input().split()))
-    r_command = [[]for i in range(N_1)]
-    I = []
-    for i in range(len(f_command)):
-        if f_command[i].isdigit() == True:
-            f_command[i] = int(f_command[i])
-        else:
-            I.append(i)
-    I.append(len(f_command))
-    for i in range(N_1):
-        for j in range(i+1):
-            r_command[i] = f_command[I[j]:I[j+1]]
-    for i in range(N_1):
-        if r_command[i][0] == 'I':
-            for j in range(len(r_command[i][3:])):
-                origin_pwd.insert(r_command[i][1]+j, r_command[i][3+j])
-        elif r_command[i][0] =='D':
-            for j in range(r_command[i][2]):
-                origin_pwd.pop(r_command[i][1]+1)
-        else:
-            for j in range(r_command[i][1]):
-                origin_pwd.append(r_command[i][2+j])
+# for test_case in range(10):
+#     N = int(input())
+#     origin_pwd = list(map(int, input().split()))
+#     N_1 = int(input())
+#     f_command = list(map(str, input().split()))
+#     r_command = [[]for i in range(N_1)]
+#     I = []
+#     for i in range(len(f_command)):
+#         if f_command[i].isdigit() == True:
+#             f_command[i] = int(f_command[i])
+#         else:
+#             I.append(i)
+#     I.append(len(f_command))
+#     for i in range(N_1):
+#         for j in range(i+1):
+#             r_command[i] = f_command[I[j]:I[j+1]]
+#     print(r_command)
+#     for i in range(N_1):
+#         if r_command[i][0] == 'I':
+#             for j in range(len(r_command[i][3:])):
+#                 origin_pwd.insert(r_command[i][1]+j, r_command[i][3+j])
+#         elif r_command[i][0] =='D':
+#             for j in range(r_command[i][2]):
+#                 print(r_command)
+#                 origin_pwd.pop(r_command[i][1])
+    #     elif r_command[i][0] == 'A':
+    #         for j in range(r_command[i][1]):
+    #             origin_pwd.append(r_command[i][2+j])
     # print(f"#{test_case + 1} {' '.join(map(str , origin_pwd[:10]))}")
+
+    # 1234. 비밀번호
+
+# a = ['00'] + [str(i*11)for i in range(1, 10)]    
+# def pwd_create(n):
+#     for i in a:
+#         if i in n:
+#             n = n.replace(i,'',1)
+#             return pwd_create(n)
+#     for i in range(len(n)-2):
+#         if n[i] != n[i+1] and n[i+1] != n[i+2]:
+#             return n
+# for test_case in range(10):
+#     N, pwd = map(str, input().split(' '))
+#     print(f"#{test_case + 1} {pwd_create(pwd)}")
+
