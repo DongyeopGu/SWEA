@@ -219,19 +219,17 @@
 #     for i in range(N_1):
 #         for j in range(i+1):
 #             r_command[i] = f_command[I[j]:I[j+1]]
-#     print(r_command)
 #     for i in range(N_1):
 #         if r_command[i][0] == 'I':
 #             for j in range(len(r_command[i][3:])):
 #                 origin_pwd.insert(r_command[i][1]+j, r_command[i][3+j])
 #         elif r_command[i][0] =='D':
 #             for j in range(r_command[i][2]):
-#                 print(r_command)
-#                 origin_pwd.pop(r_command[i][1])
-    #     elif r_command[i][0] == 'A':
-    #         for j in range(r_command[i][1]):
-    #             origin_pwd.append(r_command[i][2+j])
-    # print(f"#{test_case + 1} {' '.join(map(str , origin_pwd[:10]))}")
+#                 del origin_pwd[r_command[i][1]]
+#         else:
+#             for j in range(r_command[i][1]):
+#                 origin_pwd.append(r_command[i][2+j])
+#     print(f"#{test_case + 1} {' '.join(map(str , origin_pwd[:10]))}")
 
     # 1234. 비밀번호
 

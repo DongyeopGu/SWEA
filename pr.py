@@ -16,3 +16,15 @@
 #         if height[i] - dif_height > 0 and height[i] - dif_height_1 > 0:        # 왼쪽과 오른쪽 차이가 양수일 때 중간값 차이를 계속 더함
 #             sum_view += (min(height[i] - dif_height, height[i] - dif_height_1))
 #     print(f"#{test_case + 1} {sum_view}")
+<<<<<<< HEAD
+
+a ='12344312332'
+n = ['00']+ [str(i*11)for i in range(1,10)]
+for i in range(len(n)):
+    if n[i] not in a:
+        print('a')
+    else:
+        a = a.replace(str(n[i]), '')
+print(a)
+=======
+>>>>>>> d9c887f951c8f79e834d9d7f5519014758706bb0
