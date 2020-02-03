@@ -34,5 +34,6 @@ for test_case in range(int(input())):
     sum_pq_x = p_x + q_x
     sum_pq_y = p_y + q_y
     result = (sum_pq_y**2 - sum_pq_y + 2)/2
+    
 
     print(f"#{test_case + 1} {a[sum_pq_x+1] - (sum_pq_y - 1)}")
