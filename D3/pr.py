@@ -9,9 +9,11 @@ def line(a,b,c):
             break
     if find:
         for i in range(b+1,N):
-            if othello[a][i] == c or othello[a][i] == 0:
+            if othello[a][i] != c:
+                othello[a][i] = c
+                continue
+            elif othello[a][i] == c or othello[a][i] == 0:
                 break
-            othello[a][i] = c
     find = False
     for i in range(b-1,-1,-1):
         if othello[a][i] == 0:
@@ -21,9 +23,11 @@ def line(a,b,c):
             break
     if find:
         for i in range(b-1,-1,-1):
-            if othello[a][i] == c or othello[a][i] == 0:
+            if othello[a][i] != c:
+                othello[a][i] = c
+                continue
+            elif othello[a][i] == c or othello[a][i] == 0:
                 break
-            othello[a][i] = c
     return othello
 
 def sero(a,b,c):
@@ -36,9 +40,11 @@ def sero(a,b,c):
             break
     if find:
         for i in range(a+1,N):
+            if othello[i][b] != c:
+                othello[i][b] = c
+                continue
             if othello[i][b] == c or othello[i][b] == 0:
                 break
-            othello[i][b] = c
     find = False
     for i in range(a-2,-1,-1):
         if othello[i][b] == 0:
@@ -48,9 +54,11 @@ def sero(a,b,c):
             break
     if find:
         for i in range(a-1,-1,-1):
+            if othello[i][b] != c:
+                othello[i][b] = c
+                continue
             if othello[i][b] == c or othello[i][b] == 0:
                 break
-            othello[i][b] = c
     return othello
 
 def diag_1(a,b,c):
@@ -67,9 +75,12 @@ def diag_1(a,b,c):
         for i in range(a+1,N):
             for j in range(b+1,N):
                 if i - j == a - b:
+                    if othello[i][j] != c:
+                        othello[i][j] = c
+                        continue
                     if othello[i][j] == c or othello[i][j] == 0:
                         break
-                    othello[i][j] = c
+                    
     find = False
     for i in range(a-2,-1,-1):
         for j in range(b-2,-1,-1):
@@ -83,9 +94,11 @@ def diag_1(a,b,c):
         for i in range(a-1,-1,-1):
             for j in range(b-1,-1,-1):
                 if i - j == a - b:
+                    if othello[i][j] != c:
+                        othello[i][j] = c
+                        continue
                     if othello[i][j] == c or othello[i][j] == 0:
                         break
-                    othello[i][j] = c
     return othello
 
 def diag_2(a,b,c):
@@ -99,15 +112,18 @@ def diag_2(a,b,c):
                     find = True
                     break
     if find:
-        for i in range(a+2,N):
-            for j in range(b-2,-1,-1):
+        for i in range(a+1,N):
+            for j in range(b-1,-1,-1):
                 if i - j == a - b:
+                    if othello[i][j] != c:
+                        othello[i][j] = c
+                        continue
                     if othello[i][j] == c or othello[i][j] == 0:
                         break
-                    othello[i][j] = c
+                        
     find = False
-    for i in range(a-1,-1,-1):
-        for j in range(b+1,N):
+    for i in range(a-2,-1,-1):
+        for j in range(b+2,N):
             if i - j == a - b:
                 if othello[i][j] == 0:
                     break
@@ -118,16 +134,15 @@ def diag_2(a,b,c):
         for i in range(a-1,-1,-1):
             for j in range(b+1,N):
                 if i - j == a - b:
-                    if othello[i][j] == c or othello[i][j] == 0:
+                    if othello[i][j] != c:
+                        othello[i][j] = c 
+                    elif othello[i][j] == c or othello[i][j] == 0:
                         break
-                    othello[i][j] = c
     return othello
 
 
 for t in range(int(input())):
-    global N
     N, M = map(int, input().split())
-    global othello 
     othello= [[0 for _ in range(N)]for _ in range(N)]
     othello[N//2-1][N//2-1:N//2+1] = [2, 1]
     othello[N//2][N//2-1:N//2+1] = [1, 2]
