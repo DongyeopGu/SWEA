@@ -9,4 +9,4 @@ for test_case in range(int(input())):
             a = a * (i - j) / (j + 1)
             pascal.append(a)
             print(int(a), end=' ')
-        print()  
+        print()

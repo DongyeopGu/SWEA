@@ -1,4 +1,4 @@
-#3282. 0/1 Knapsack DPS이용으로 풀기
+#3282. 0/1 Knapsack DP이용으로 풀기
 def sol(k,n):
     a = [[0 for _ in range(k+2)]for _ in range(n+2)]
     for i in range(1,n+1):
