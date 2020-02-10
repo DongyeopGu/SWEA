@@ -1,25 +1,22 @@
 n = int(input())    #스위치개수
 switch = list(map(int, input().split()))
 m = int(input())    #사람수
-cnt = 0
-a = 0
+
 for _ in range(m):
     student = list(map(int, input().split()))
     if student[0] == 1:
         k = student[1] - 1
-        for b in range(k,n,k+1):
-            switch[b] = 1 - switch[b]
+        while k < n:
+            switch[k] = 1 - switch[k]
+            k += student[1]
     else:
         j = student[1] - 1
         switch[j] = 1 - switch[j]
-        for i in range(1,j+1):
-            if switch[j-i] != switch[j+i]:
-                break
-            if switch[j-i] == switch[j+i]:
-                switch[j-i] = 1 - switch[j-i]
-                switch[j+i] = 1 - switch[j+i]
-                continue
-            
+        a = 1
+        while j - a >= 0 and j + a < n and switch[j - a] == switch[j + a]:
+            switch[j - a] = 1 - switch[j - a]
+            switch[j + a] = 1 - switch[j + a]
+            a += 1
 for i, e in enumerate(switch):
     if i and not (i%20):
         print()

@@ -22,11 +22,7 @@
 #         print()
 
 # 3750 Digit sum
-def digitsum(a):
-    arr = list(map(int, str(a)))
-    
-        
 for t in range(int(input())):
-    N = int(input())
-    print(f"#{t+1} {''.join(map(str, digitsum(N)))}")
+    print(f"#{t+1} {(int(input())-1)%9+1}")
+    
     
