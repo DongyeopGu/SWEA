@@ -1,167 +1,45 @@
-<<<<<<< HEAD
-=======
-# 4615. 오셀로
-def line(a,b,c):            
-    find = False
-    for i in range(b+1,N):
-        if othello[a][i] == 0:
-            break
-        elif othello[a][i] == c:
-            find = True
-            break
-    if find:
-        for i in range(b+1,N):
-            if othello[a][i] != c:
-                othello[a][i] = c
-                continue
-            elif othello[a][i] == c or othello[a][i] == 0:
-                break
-    find = False
-    for i in range(b-1,-1,-1):
-        if othello[a][i] == 0:
-            break
-        elif othello[a][i] == c:
-            find = True
-            break
-    if find:
-        for i in range(b-1,-1,-1):
-            if othello[a][i] != c:
-                othello[a][i] = c
-                continue
-            elif othello[a][i] == c or othello[a][i] == 0:
-                break
-    return othello
-
-def sero(a,b,c):
-    find = False
-    for i in range(a+2,N):
-        if othello[i][b] == 0:
-            break
-        elif othello[i][b] == c:
-            find = True
-            break
-    if find:
-        for i in range(a+1,N):
-            if othello[i][b] != c:
-                othello[i][b] = c
-                continue
-            if othello[i][b] == c or othello[i][b] == 0:
-                break
-    find = False
-    for i in range(a-2,-1,-1):
-        if othello[i][b] == 0:
-            break
-        elif othello[i][b] == c:
-            find = True
-            break
-    if find:
-        for i in range(a-1,-1,-1):
-            if othello[i][b] != c:
-                othello[i][b] = c
-                continue
-            if othello[i][b] == c or othello[i][b] == 0:
-                break
-    return othello
-
-def diag_1(a,b,c):
-    find = False
-    for i in range(a+2,N):
-        for j in range(b+2,N):
-            if i - j == a - b:
-                if othello[i][j] == 0:
-                    break
-                elif othello[i][j] == c:
-                    find = True
-                    break
-    if find:
-        for i in range(a+1,N):
-            for j in range(b+1,N):
-                if i - j == a - b:
-                    if othello[i][j] != c:
-                        othello[i][j] = c
-                        continue
-                    if othello[i][j] == c or othello[i][j] == 0:
-                        break
-                    
-    find = False
-    for i in range(a-2,-1,-1):
-        for j in range(b-2,-1,-1):
-            if i - j == a - b:
-                if othello[i][j] == 0:
-                    break
-                elif othello[i][j] == c:
-                    find = True
-                    break
-    if find:
-        for i in range(a-1,-1,-1):
-            for j in range(b-1,-1,-1):
-                if i - j == a - b:
-                    if othello[i][j] != c:
-                        othello[i][j] = c
-                        continue
-                    if othello[i][j] == c or othello[i][j] == 0:
-                        break
-    return othello
-
-def diag_2(a,b,c):
-    find = False
-    for i in range(a+2,N):
-        for j in range(b-2,-1,-1):
-            if i - j == a - b:
-                if othello[i][j] == 0:
-                    break
-                elif othello[i][j] == c:
-                    find = True
-                    break
-    if find:
-        for i in range(a+1,N):
-            for j in range(b-1,-1,-1):
-                if i - j == a - b:
-                    if othello[i][j] != c:
-                        othello[i][j] = c
-                        continue
-                    if othello[i][j] == c or othello[i][j] == 0:
-                        break
-                        
-    find = False
-    for i in range(a-2,-1,-1):
-        for j in range(b+2,N):
-            if i - j == a - b:
-                if othello[i][j] == 0:
-                    break
-                elif othello[i][j] == c:
-                    find = True
-                    break
-    if find:
-        for i in range(a-1,-1,-1):
-            for j in range(b+1,N):
-                if i - j == a - b:
-                    if othello[i][j] != c:
-                        othello[i][j] = c 
-                    elif othello[i][j] == c or othello[i][j] == 0:
-                        break
-    return othello
+def pipe(n, x=0, y=1, idx=0):
+    dx = [0,1,1]           # x좌표 idx 뒤부분
+    dy = [1,0,1]            # y좌표 idx 앞부분
+    cnt = 0
+    if x == n - 1 and y == n - 1:
+        return 1
+    for i in range(3):
+        if i + idx == 1:
+            continue
+        c_x = dx[i] + x
+        c_y = dy[i] + y
+        if  c_x >= n or c_y >= n or a[c_x][c_y]:
+            continue
+        if idx == 2 and (a[x][y+1] or a[x+1][y]):
+            continue
+        cnt += pipe(n,c_x,c_y,i)
+    return cnt
 
 
-for t in range(int(input())):
-    N, M = map(int, input().split())
-    othello= [[0 for _ in range(N)]for _ in range(N)]
-    othello[N//2-1][N//2-1:N//2+1] = [2, 1]
-    othello[N//2][N//2-1:N//2+1] = [1, 2]
-    for i in range(M):
-        put = list(map(int, input().split()))
-        othello[put[1]-1][put[0]-1] = put[2]
-        line(put[1]-1,put[0]-1,put[2])
-        sero(put[1]-1,put[0]-1,put[2])
-        diag_1(put[1]-1,put[0]-1,put[2])
-        diag_2(put[1]-1,put[0]-1,put[2])
-    cnt = [0,0]
-    for i in range(N):
-        for j in range(N):
-            if othello[i][j] == 1:
-                cnt[0] += 1
-            if othello[i][j] == 2:
-                cnt[1] += 1
-    print(f"#{t+1} {' '.join(map(str, cnt))}")
-        
->>>>>>> 04591ca53f00f6f42490c6fc6ad064b2bb020870
+
+
+n = int(input())
+a = [list(map(int, input().split()))for _ in range(n)]
+print(pipe(n))
+
+# dx, dy = (0, 1, 1), (1, 0, 1)
+# n = int(input())
+# a = [list(map(int, input().split())) for _ in range(n)]
+
+# def solve(x, y, z):
+#     res = 0
+#     if x == n-1 and y == n-1:
+#         return 1
+#     for i in range(3):
+#         if i+z == 1:
+#             continue
+#         nx, ny = x+dx[i], y+dy[i]
+#         if nx >= n or ny >= n or a[nx][ny]:
+#             continue
+#         if i == 2 and (a[x][y+1] or a[x+1][y]):
+#             continue
+#         res += solve(nx, ny, i)
+#     return res
+
+# print(solve(0, 1, 0))
