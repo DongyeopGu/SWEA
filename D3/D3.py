@@ -246,3 +246,71 @@
 #     N, pwd = map(str, input().split(' '))
 #     print(f"#{test_case + 1} {pwd_create(pwd)}")
 
+
+# 5986
+# def prime(number):
+#     a = [False, False] + [True] * (number-1)
+#     for (i, e) in enumerate(a):
+#         if e:
+#             k = i * 2
+#             while k <= n:
+#                 a[k] =False
+#                 k += i
+#     return [x for (x, y) in enumerate(a) if y]
+
+# for t in range(int(input())):
+#     n = int(input())
+#     a = prime(n)
+#     cnt = 0
+#     for i in range(len(a)):
+#         for j in range(i,len(a)):
+#             for k in range(j,len(a)):
+#                 if a[i] + a[j] + a[k] == n:
+#                     cnt+=1
+#                 else:
+#                     continue
+           
+#     print(f"#{t+1} {cnt}")
+
+# 5607
+# for t in range(int(input())):
+#     n, r = map(int, input().split())
+#     a = 1
+#     b = 1
+#     for i in range(r):
+#         a *= (n-i)
+#     for i in range(r):
+#         b *= (r-i)
+#     result = a//b
+#     if result < 1234567891:
+#         print(f"#{t+1} {result}")
+#     else:
+#         print(f"#{t+1} {result%1234567891}")
+# 승률
+# T = int(input())
+# g = []
+# for t in range(T):
+#     a,b,c,d = map(int, input().split())
+#     e = a / b
+#     f = c / d
+#     if e < f:
+#         g.append("BOB")
+#     elif e > f:
+#         g.append("ALICE")
+#     else:
+#         g.append("DRAW")
+    
+# for t in range(T):
+#     print(f"#{t+1} {g[t]}")
+
+#4522
+for t in range(int(input())):
+    a = list(input())
+    for i in range(len(a)//2):
+        if a[i] != a[-1-i]:
+            if a[i] == '?' or a[-1-i] == '?':
+                continue
+            else:
+                print(f"#{t+1} Not exist")
+                break
+    print(f"#{t+1} Exist")

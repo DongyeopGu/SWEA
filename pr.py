@@ -1,72 +1,87 @@
-<<<<<<< HEAD
-# for test_case in range(10):         # 10번의 테스트 케이스 입력
-#     N = int(input())                # 가로길이 입력
-#     height = list(map(int, input().split()))        # 빌딩 높이 입력
-#     sum_view = 0                    # 조망권 합 넣을 변수 선언
-#     dif_height = 0                  # 왼쪽 조망권 확보한 곳 찾을 변수
-#     dif_height_1 = 0                # 오른쪽 조망권 확보한 곳 찾을 변수
-#     for i in range(2, N-2):         # 빌딩 있는 곳 반복
-#         if height[i-2] > height[i-1]:       # 왼쪽 두번째, 첫번째 비교 후 큰 값 반환
-#             dif_height = height[i-2]
-#         else:
-#             dif_height = height[i-1]        
-#         if height[i+1] > height[i+2]:       # 오른쪽 두번째, 첫번째 비교 후 큰 값 반환
-#             dif_height_1 = height[i+1]
-#         else:
-#             dif_height_1 = height[i+2]
-#         if height[i] - dif_height > 0 and height[i] - dif_height_1 > 0:        # 왼쪽과 오른쪽 차이가 양수일 때 중간값 차이를 계속 더함
-#             sum_view += (min(height[i] - dif_height, height[i] - dif_height_1))
-#     print(f"#{test_case + 1} {sum_view}")
-<<<<<<< HEAD
-
-a ='12344312332'
-n = ['00']+ [str(i*11)for i in range(1,10)]
-for i in range(len(n)):
-    if n[i] not in a:
-        print('a')
-    else:
-        a = a.replace(str(n[i]), '')
-print(a)
-=======
->>>>>>> d9c887f951c8f79e834d9d7f5519014758706bb0
-=======
-# # 1491. 원재의 벽
-# for test_case in range(int(input())):
-#     N, A, B = map(int, input().split())
-#     a = []
-#     for R in range(1, int(N**0.5)+1):
-#         for C in range(1 ,int(N/R)+1):
-#             a.append(A*abs(R-C) + B*(N-R*C))
-#     print(f"#{test_case+1} {min(a)}")
-
-# 1493. 수의 새로운 연산
-for test_case in range(int(input())):
-    p, q = map(int, input().split())
-    a = []
-    dif_p = 0
-    dif_q = 0
-    for i in range(2,10002):
-        a.append(int((i * (i - 1))/2))
-    for i in range(1, 10000): # y값 구하기
-        if a[i-1] < p < a[i]:
-            dif_p = a[i] - p
-            p_y = dif_p + 1
-            p_x = i + 1 - dif_p
-        if a[i-1] == p:
-            p_y = 1
-            p_x = i
-    for i in range(1, 10000): # y값 구하기
-        if a[i-1] < q < a[i]:
-            dif_q = a[i] - q
-            q_y = dif_q + 1
-            q_x = i + 1 - dif_q
-        if a[i-1] == q:
-            q_y = 1
-            q_x = i
-    sum_pq_x = p_x + q_x
-    sum_pq_y = p_y + q_y
-    result = (sum_pq_y**2 - sum_pq_y + 2)/2
+# def solv(n,x=0,y=1,z=1):    # z == 파이프 상태 0 세로 1 가로 2 대각선
+#     global cnt
+#     cnt = 0
+#     if x == n-1 and y == n-1:
+#         cnt += 1
+#         return 
+#     else:
+#         if z == 0:
+#             if x+1 < n and a[x+1][y] == 0:
+#                 solv(n,x+1,y,0)
+#             if (x+1 < n and y+1 < n) and a[x+1][y] == 0 and a[x+1][y+1] == 0 and a[x][y+1] == 0:
+#                 solv(n,x+1,y+1,2)
+#         elif z == 1:
+#             if y+1 < n and a[x][y+1] == 0:
+#                 solv(n,x,y+1,1)
+#             if (x+1 < n and y+1 < n) and a[x+1][y] == 0 and a[x+1][y+1] == 0 and a[x][y+1] == 0:
+#                 solv(n,x+1,y+1,2)
+#         elif z == 2:
+#             if y+1 < n and a[x][y+1] == 0:
+#                 solv(n,x,y+1,1)
+#             if x+1 < n and a[x+1][y] == 0:
+#                 solv(n,x+1,y,0)
+#             if (x+1 < n and y+1 < n) and a[x+1][y] == 0 and a[x+1][y+1] == 0 and a[x][y+1] == 0:
+#                 solv(n,x+1,y+1,2)
+    
     
 
-    print(f"#{test_case + 1} {a[sum_pq_x+1] - (sum_pq_y - 1)}")
->>>>>>> f472ca426ea3cc94f71bb089bedd31522a074162
+# n = int(input())
+# a = [list(map(int, input().split()))for _ in range(n)]
+# cnt = 0
+# solv(n)
+# print(cnt)
+
+
+
+# for t in range(10):
+#     n = int(input())
+#     a = [list(map(str, input()))for _ in range(8)]
+#     a += [[a[i][j]for i in range(8)]for j in range(8)]
+#     c = 0
+#     for i in range(16):
+#         for j in range(9-n):
+#             if a[i][j:j+n] == list(reversed(a[i][j:j+n])):
+#                 c += 1
+#     print(f"#{t+1} {c}")
+# def pal(a,n):
+#     for i in range(100):
+#         for j in range(100-n):
+#             for k in range(n//2):
+#                 if a[i][j+k] != a[i][j+n-1-k]:
+#                     break
+#                 elif k + 1 == n//2:
+#                     return n
+#             for k in range(n//2):
+#                 if a[j+k][i] != a[j+n-1-k][i]:
+#                     break
+#                 elif k + 1 == n//2:
+#                     return n
+#     return 0
+# for _ in range(10):
+#     print(f"#{input()}",end=' ')
+#     a = [input() for _ in range(100)]
+#     for i in range(50,0,-1):
+#         n = pal(a,i)
+#         if n:
+#             print(n)
+#             break
+for t in range(int(input())):
+    n, m = map(int, input().split())
+    a = [list(map(int, input().split()))for _ in range(n)]
+    result = 0
+    for i in range(n):
+        for j in range(m):
+            b = a[i][j]
+            c = b
+            for k in range(1, b+1):
+                if i+k < n:
+                    c += a[i+k][j]
+                if i-k >= 0:
+                    c += a[i-k][j]
+                if j+k < m:
+                    c += a[i][j+k]
+                if j-k >= 0:
+                    c += a[i][j-k]
+            if result < c:
+                result = c
+    print(f"#{t+1} {result}")

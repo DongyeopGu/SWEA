@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 def pipe(n, x=0, y=1, idx=0):
     dx = [0,1,1]           # x좌표 idx 뒤부분
     dy = [1,0,1]            # y좌표 idx 앞부분
@@ -43,3 +44,15 @@ print(pipe(n))
 #     return res
 
 # print(solve(0, 1, 0))
+=======
+a = list(map(str, input().upper()))
+b = list(set(a))
+cnt = []
+for i in b:
+    cnt.append(a.count(i))
+if cnt.count(max(cnt)) >= 2:
+    print("?")
+else:
+    print(b[cnt.index(max(cnt))])
+ 
+>>>>>>> 67ca1bc789e8cf5dac6b86a91518df8702d12553
