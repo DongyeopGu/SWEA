@@ -1,5 +1,4 @@
 import copy
-
 def rotation(a):
     for i in range(n):
         for j in range(i):
@@ -20,7 +19,6 @@ def left(a):
         for j in range(a[i].count(0)):
             a[i].append(a[i].pop(a[i].index(0)))
     return a
-
 def right(a):
     rev(a)
     left(a)
