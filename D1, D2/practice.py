@@ -32,16 +32,12 @@ for _ in range(m):
     else:
         i = student[1] - 1
         switch[i] = 1- switch[i]
-        for a in range(1,n//2+1):
+        for a in range(1,n):
             if switch[i-a] == switch[i+a] and 0<=i-a and i+a<n:
                 switch[i-a] = 1 - switch[i-a]
                 switch[i+a] = 1 - switch[i+a]
-                
-                
-            else:
-                break
-cnt = 0
-for i in range(n):
-    print(switch[i],end=' ')
-    if cnt>0 and cnt%20==0:
+            
+for i, e in enumerate(switch):
+    if i and not (i%20):
         print()
+    print(e, end=' ')
