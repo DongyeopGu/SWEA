@@ -1,10 +1,10 @@
 # 2948
-# for t in range(int(input())):
-#     N, M = map(int,input().split())
-#     set_1 = set(input().split())
-#     set_2 = set(input().split())
-#     result = set_1&set_2
-#     print(f"#{t+1} {len(result)}")
+for t in range(int(input())):
+    N, M = map(int,input().split())
+    set_1 = set(input().split())
+    set_2 = set(input().split())
+    result = set_1&set_2
+    print(f"#{t+1} {len(result)}")
 
 # 3131
 def prime(n):
